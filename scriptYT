@@ -1,0 +1,45 @@
+#! /bin/bash
+
+url=""
+extension=0
+dest=0
+destination=""
+
+
+echo "Entrer l URL"
+read url
+
+echo $url
+
+while [ "$url" ~= "https://www.youtube.com/"* ]
+do
+    echo "Erreur entrer une adresse youtube ( https://www.youtube.com/... )"
+    echo "Entrer l URL"
+    read url
+done
+
+echo "Entrer 1 pour l'extension .webm ( audio ) ou 2 pour .mp4 ( vidéo )"
+read extension
+
+echo "Entrer 1 pour choisir un dossier de destination ou 2 pour le mettre a la racine"
+read dest
+
+if [ "$url" == "https://www.youtube.com/" ]; then
+    if [ $dest == 1 ]; then
+        echo "Entrer la destination"
+        read destination
+        if [ $extension == 2 ]; then
+            python3.5 /usr/local/bin/youtube-dl -o $destination'/%(title)s.%(ext)s' $url
+        elif [ $extension == 1 ]; then
+            python3.5 /usr/local/bin/youtube-dl -x --audio-format mp3 -o $destination'/%(title)s.%(ext)s' $url
+        fi
+    elif [ $dest == 2]; then
+        if [ $extension == 1 ]; then
+            python3.5 /usr/local/bin/youtube-dl -x --audio-format mp3 $url
+        elif [ $extension == 2 ]; then
+            python3.5 /usr/local/bin/youtube-dl $url
+        fi
+    fi
+else
+    echo "Erreur entrer une adresse youtube ( https://www.youtube.com/... )"
+fi

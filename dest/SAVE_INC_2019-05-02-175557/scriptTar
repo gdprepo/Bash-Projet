@@ -1,0 +1,22 @@
+#! /bin/bash
+
+DATE=$(date +%Y-%m-%d-%H%M%S)
+SOURCE="./"
+ROTATE_DIR="/registrecible/backup/rotate"
+TIMESTAMP="timestamp.dat"
+EXCLUDE="--exclude=/mnt/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/*"
+
+JOUR=date+%A
+
+dest=0
+echo "Choisir une destination"
+read dest
+BACKUP_DIR=dest
+
+mkdir -p ${BACKUP_DIR}
+
+if [ ${JOUR} == 'vendredi' ]; then
+    tar -cvzpf $BACKUP_DIR/backup-$DATE.tar.gz $SOURCE
+else
+    tar -czf $BACKUP_DIR/SAVE_INC_$DATE.tgz `find $SOURCE -type f -mmin -15`
+fi

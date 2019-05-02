@@ -1,0 +1,31 @@
+#!/bin/bash
+
+res=$(expr $RANDOM \* 1000 / 32765)
+
+i=0
+essai=0
+
+
+echo "Quelle est le nombre ?"
+while [ True ];
+do
+	read i
+
+	if  test -n "$i" -a "$i" -eq "$i" 2> /dev/null 
+		then 			
+		if [ $i -lt $res ]; then
+                	echo "PLUS !"
+			((essai++))
+		elif [ $i -gt $res ]; then
+			((essai++))
+                	echo "MOINS !"
+		elif [ $i -eq $res ]; then
+               		echo "BRAVO !!"
+			echo $essai
+        	        break
+		fi
+	else
+		echo "Entrer une vrai valeur"
+	fi
+	
+done
