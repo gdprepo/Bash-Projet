@@ -14,5 +14,5 @@
 * 3 - ScriptYT
 
         - L'utilisateur doit rentrer une adresse youtube ( https://www.youtube.com/* ), si l'adresse n'est pas valide alors le programme affiche un message d'erreur et redemande un adresse.
-        - Ensuite l'utilisateur a le choix en télécharger juste le son du lien en .webm ou toute la video en .mp4
-        - Il doit apres choisir un dossier de destination ou a la racine du script ( 1 = )
+        - Ensuite l'utilisateur a le choix en télécharger juste le son du lien en .webm ou toute la video en .mp4 ( 1 = .webm ou 2 = .mp4 )
+        - Il doit apres choisir un dossier de destination ou a la racine du script ( 1 = dossier de destination ou 2 = a la racine du script )
